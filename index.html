@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educational Technology Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E2A24;
+    --ink-soft:#3B4A42;
+    --paper:#EEEDE4;
+    --paper-raised:#F7F6EF;
+    --line:#CBC9BB;
+    --teal:#2F6F62;
+    --teal-deep:#1E4A40;
+    --rust:#AE5A30;
+    --gold:#B8901F;
+    --card-shadow: 0 1px 0 rgba(30,42,36,0.06);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header.hero{
+    background:var(--ink);
+    color:var(--paper-raised);
+    position:relative;
+    padding:76px 0 64px;
+    overflow:hidden;
+  }
+  .tab-strip{
+    display:flex;
+    gap:0;
+    margin-bottom:56px;
+    border-bottom:1px solid rgba(238,237,228,0.18);
+  }
+  .tab{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    color:rgba(238,237,228,0.55);
+    padding:0 18px 12px 0;
+    margin-right:18px;
+    border-bottom:2px solid transparent;
+  }
+  .tab:first-child{color:var(--paper-raised); border-bottom-color:var(--gold);}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:#9FB3A9;
+    margin:0 0 18px;
+  }
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(34px, 5.4vw, 54px);
+    line-height:1.06;
+    margin:0 0 22px;
+    max-width:15ch;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:400;
+    color:#C9D6CE;
+  }
+  .lede{
+    font-size:17px;
+    color:#D8DCD5;
+    max-width:56ch;
+    margin:0 0 34px;
+  }
+  .credit-line{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:#8FA599;
+    letter-spacing:0.03em;
+  }
+  .credit-line .editnote{
+    color:#6E8A7C;
+    font-style:italic;
+  }
+
+  /* ---------- Cluster intro ---------- */
+  .cluster-section{padding:64px 0 8px;}
+  .cluster-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:8px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+  }
+  .cluster-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:0.05em;
+  }
+  .cluster-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:26px;
+    margin:0;
+    color:var(--ink);
+  }
+  .cluster-sub{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:10px 0 40px;
+    max-width:62ch;
+  }
+
+  /* ---------- Timeline / cards ---------- */
+  .ledger{
+    position:relative;
+    padding-left:26px;
+    border-left:1px solid var(--line);
+  }
+  .entry{
+    position:relative;
+    padding:0 0 46px 22px;
+  }
+  .entry:last-child{padding-bottom:6px;}
+  .entry::before{
+    content:"";
+    position:absolute;
+    left:-31px;
+    top:6px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--teal);
+  }
+  .entry.rust::before{border-color:var(--rust);}
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:26px 28px 24px;
+    box-shadow:var(--card-shadow);
+  }
+  .card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .course-code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--teal);
+    text-transform:uppercase;
+  }
+  .entry.rust .course-code{color:var(--rust);}
+  .card h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:22px;
+    margin:6px 0 8px;
+    color:var(--ink);
+    line-height:1.2;
+  }
+  .one-liner{
+    font-style:italic;
+    color:var(--teal-deep);
+    font-size:15px;
+    margin:0 0 14px;
+    max-width:58ch;
+  }
+  .entry.rust .one-liner{color:#8A431F;}
+  .desc{
+    font-size:15px;
+    color:#2E3B34;
+    margin:0 0 18px;
+    max-width:64ch;
+  }
+  .meta-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:4px 9px;
+    border-radius:2px;
+  }
+  .view-link{
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink);
+    text-decoration:none;
+    white-space:nowrap;
+    border-bottom:1.5px solid var(--teal);
+    padding-bottom:1px;
+    transition:opacity .15s ease;
+  }
+  .entry.rust .view-link{border-bottom-color:var(--rust);}
+  .view-link:hover{opacity:0.65;}
+  .view-link::after{content:" \2192";}
+  .note-line{
+    font-size:12.5px;
+    color:#6E8A7C;
+    margin-top:14px;
+    font-style:italic;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    margin-top:60px;
+    border-top:1px solid var(--line);
+    padding:34px 0 60px;
+  }
+  footer p{
+    font-size:13px;
+    color:var(--ink-soft);
+    max-width:64ch;
+    margin:0;
+  }
+  footer .fmono{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:#8FA599;
+    margin-top:10px;
+  }
+
+  @media (max-width:640px){
+    header.hero{padding:52px 0 44px;}
+    .tab-strip{overflow-x:auto; margin-bottom:40px;}
+    .ledger{padding-left:16px;}
+    .entry{padding-left:16px; padding-bottom:36px;}
+    .entry::before{left:-21px;}
+    .card{padding:20px 18px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="tab-strip">
+      <span class="tab">ETEC 510</span>
+      <span class="tab">ETEC 511</span>
+      <span class="tab">ETEC 512</span>
+      <span class="tab">ETEC 522</span>
+    </div>
+    <p class="eyebrow">Master of Educational Technology &mdash; Selected Coursework</p>
+    <h1 class="title">Designing, evaluating, and <em>pitching</em> the future of learning technology</h1>
+    <p class="lede">A working portfolio of research, instructional design, and venture-analysis projects completed across the MET program &mdash; spanning constructivist learning design, critical AI literacy, comparative case research, and market analysis of emerging ed-tech ventures.</p>
+    <p class="credit-line">[Your Name] <span class="editnote">&mdash; replace with your name and program year</span></p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- CLUSTER 1 -->
+  <section class="cluster-section">
+    <div class="cluster-head">
+      <span class="cluster-num">01</span>
+      <h2>Ventures &amp; Market Analysis</h2>
+    </div>
+    <p class="cluster-sub">Applying an Educational Venture Analyst lens to evaluate where investment in learning technology creates real, sustainable value &mdash; and where it doesn't.</p>
+
+    <div class="ledger">
+
+      <div class="entry">
+        <div class="card">
+          <div class="card-head">
+            <span class="course-code">ETEC 522 &middot; Innovative Venture Pitch</span>
+          </div>
+          <h3>RoboShift</h3>
+          <p class="one-liner">A readiness-and-planning tool that helps schools grow robotics programs that last &mdash; not just robotics programs that launch.</p>
+          <p class="desc">An original venture concept addressing the implementation gap in K&ndash;12 educational robotics: schools routinely invest in kits and competition success while depending on a single teacher, reaching a narrow group of students, or lacking any real plan for curriculum, funding, or continuity. RoboShift is a diagnostic audit and planning tool that assesses a program across seven readiness dimensions, surfaces hidden risks, and translates the results into a concrete 90-day action plan. The pitch includes a business model, pilot plan, and founder-market fit case.</p>
+          <div class="meta-row">
+            <div class="tags">
+              <span class="tag">venture design</span>
+              <span class="tag">market sizing</span>
+              <span class="tag">business modeling</span>
+              <span class="tag">pitch communication</span>
+            </div>
+            <a class="view-link" href="https://sites.google.com/view/etec522venture?usp=sharing" target="_blank" rel="noopener">View project</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="card">
+          <div class="card-head">
+            <span class="course-code">ETEC 522 &middot; Analytical Report</span>
+          </div>
+          <h3>Beyond the Robot Kit</h3>
+          <p class="one-liner">Is educational robotics solving the right problem? An EVA analysis of the missing implementation layer.</p>
+          <p class="desc">An independent analyst report evaluating the K&ndash;12 educational robotics market for investors, funders, and education leaders. Using an Educational Venture Analyst framework, the report rates the market across demand, educational value, hardware saturation, implementation risk, and equity risk &mdash; and argues that robotics doesn't have an engagement problem, it has an implementation problem. The recommendation: invest selectively in the support layer &mdash; teacher capacity, curriculum pathways, and long-term planning &mdash; rather than another generic robot kit.</p>
+          <div class="meta-row">
+            <div class="tags">
+              <span class="tag">EVA framework</span>
+              <span class="tag">competitive landscape</span>
+              <span class="tag">investment recommendation</span>
+            </div>
+            <a class="view-link" href="https://sites.google.com/view/beyond-the-robot-kit?usp=sharing" target="_blank" rel="noopener">View project</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="card">
+          <div class="card-head">
+            <span class="course-code">ETEC 522 &middot; Innovative Neuroscience OER &middot; team project</span>
+          </div>
+          <h3>Designing for Every Brain</h3>
+          <p class="one-liner">What would AI learning technology look like if it were designed for cognitive diversity rather than the &ldquo;average&rdquo; learner?</p>
+          <p class="desc">A co-authored open educational resource examining neuroscience-informed AI tools for neurodivergent learners. The module walks through executive-function research, a learner persona, and a comparison of cognitive profiles, then evaluates emerging AI ventures against a central question: does the strongest tool speed up task completion, or build understanding, memory, transfer, and independence? Closes with a market opportunity forecast identifying which category of venture merits investment. Co-authored with M. Cafuta, G. Heba, and N. Rios; published under CC BY-SA 4.0.</p>
+          <div class="meta-row">
+            <div class="tags">
+              <span class="tag">learning sciences</span>
+              <span class="tag">UDL / neurodiversity</span>
+              <span class="tag">opportunity forecasting</span>
+              <span class="tag">OER authoring</span>
+            </div>
+            <a class="view-link" href="https://sites.google.com/view/etec522neuroscience?usp=sharing" target="_blank" rel="noopener">View project</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLUSTER 2 -->
+  <section class="cluster-section">
+    <div class="cluster-head">
+      <span class="cluster-num">02</span>
+      <h2>Learning Design &amp; Critical Practice</h2>
+    </div>
+    <p class="cluster-sub">Research and instructional design work exploring how learning theory, technology adoption, and critical AI literacy shape classroom practice.</p>
+
+    <div class="ledger">
+
+      <div class="entry rust">
+        <div class="card">
+          <div class="card-head">
+            <span class="course-code">ETEC 510 &middot; Design Case Study</span>
+          </div>
+          <h3>Polygraph &mdash; Critical AI Literacy for Educators</h3>
+          <p class="one-liner">A professional-learning module that helps K&ndash;12 educators interrogate AI outputs before they reach the classroom.</p>
+          <p class="desc">A recursive, four-phase professional learning experience &mdash; Experiencing, Conceptualizing, Analyzing, Applying &mdash; grounded in the New London Group's multiliteracies framework. Educators build a shared vocabulary for critiquing AI outputs (training-data gaps, homogenized narratives, algorithmic bias), practice a repeatable audit routine, and leave with a personal positioning statement on AI use in their own professional context.</p>
+          <div class="meta-row">
+            <div class="tags">
+              <span class="tag">instructional design</span>
+              <span class="tag">multiliteracies</span>
+              <span class="tag">critical AI literacy</span>
+            </div>
+            <a class="view-link" href="https://sites.google.com/sd48.bc.ca/polygraph-draft-website/home" target="_blank" rel="noopener">View project</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry rust">
+        <div class="card">
+          <div class="card-head">
+            <span class="course-code">ETEC 511 &middot; Case Study</span>
+          </div>
+          <h3>A Tipping Point, Not a Reset</h3>
+          <p class="one-liner">A comparative case study of two schools &mdash; Grays, England and Surrey, BC &mdash; and why platform-based learning outlasted the pandemic.</p>
+          <p class="desc">A comparative case study analyzing how COVID-19 pushed two schools with very different starting conditions &mdash; device access, existing platform familiarity, and family support at home &mdash; onto emergency online learning, and why neither school fully reverted afterward. Frames the pandemic as a genuine tipping point: Microsoft Teams remained embedded in school life in Grays, and Google Classroom became even more established in Surrey.</p>
+          <div class="meta-row">
+            <div class="tags">
+              <span class="tag">comparative case study</span>
+              <span class="tag">ed-tech adoption</span>
+              <span class="tag">qualitative research</span>
+            </div>
+            <a class="view-link" href="https://sites.google.com/view/etec511casestudy?usp=sharing" target="_blank" rel="noopener">View project</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry rust">
+        <div class="card">
+          <div class="card-head">
+            <span class="course-code">ETEC 512 &middot; Learning Theory Module</span>
+          </div>
+          <h3>Constructing Knowledge</h3>
+          <p class="one-liner">An interactive site that lets visitors experience constructivist principles firsthand, not just read about them.</p>
+          <p class="desc">A multi-page interactive learning experience translating seven core constructivist principles &mdash; prior knowledge, situated learning, multiple perspectives, active learning, reflection, and social interaction &mdash; into hands-on activities across subject areas. Visitors build their own understanding as they move through the site, in keeping with the theory it teaches.</p>
+          <div class="meta-row">
+            <div class="tags">
+              <span class="tag">learning theory</span>
+              <span class="tag">instructional design</span>
+              <span class="tag">interactive OER</span>
+            </div>
+            <a class="view-link" href="https://sites.google.com/view/512-constructivism?usp=sharing" target="_blank" rel="noopener">View project</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>All projects above were developed as coursework within the Master of Educational Technology (MET) program. Venture and market-analysis pieces were completed under an Educational Venture Analyst framework; design and case-study pieces follow UBC MET's design-based and comparative research conventions.</p>
+    <p class="fmono">Portfolio compiled from course sites originally published on Google Sites.</p>
+  </footer>
+
+</main>
+
+</body>
+</html>
